@@ -4366,3 +4366,25 @@ button.encore-text-body-small-bold.e-10860-legacy-button--small.e-10860-legacy-b
 .P1kwly6O5plr1VQVdOLV {
   display: none !important;
 }
+
+/* main-topBar-background: sticky title bar that fades in when you scroll a playlist/album.
+   Same treatment as upstream: transparent, rounded, glass (with the performance-mode fallback). */
+.B_NENXC7AHTEKsYhv3qv {
+  background: transparent !important;
+  border-radius: 20px;
+  box-shadow: var(--liquify-shadow);
+  backdrop-filter: url(#glass-filter--r1-7) blur(var(--liquify-glass-blur, 2px));
+}
+html.liquify-perf-no-glass .B_NENXC7AHTEKsYhv3qv {
+  backdrop-filter: blur(var(--liquify-backdrop-blur, 2rem)) saturate(1.4);
+}
+
+/* main-topBar-overlay: 60% black layer on top of that bar */
+.EJTHIv1RyutH0yibEwgn {
+  background-color: transparent !important;
+}
+
+/* bottom ad banner box: Adblockify removes the ad but not this empty #181818 strip on 1.3.5 */
+.uAHPSe7bihFdDS76WWIg {
+  display: none !important;
+}
