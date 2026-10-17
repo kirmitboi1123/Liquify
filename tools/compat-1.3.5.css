@@ -21,3 +21,23 @@
   background-color: transparent !important;
   background-image: none !important;
 }
+
+/* playlist-playlist-playlistContent: solid dark panel under the header on playlist pages */
+.t_mbBtGZ5QtvpsVNOtOj {
+  background: transparent !important;
+}
+
+/* playlist-playlist-actionBarBackground-background: dark gradient behind the play row on playlists */
+.r8bczAWCEgb9_L0iyIcc {
+  background-image: none !important;
+}
+
+/* artist page content panel under the banner (solid --background-base in 1.3.5) */
+.GECIboaMmkIqHDKwQ3vR {
+  background-color: transparent !important;
+}
+
+/* artist page: Spotify's scroll-driven header colour overlay (Liquify has its own scroll effect) */
+.P1kwly6O5plr1VQVdOLV {
+  display: none !important;
+}

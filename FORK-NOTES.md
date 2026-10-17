@@ -30,9 +30,10 @@ Rebuild after editing: `python tools/patch_theme.py tools/classmap-final.json . 
 
 ## Verified (screenshots over CDP, 1080x824 window)
 
-Home, Liked Songs, Search, now-playing sidebar: glass panels, floating glass player,
-up-next card bottom-left (x=8, y=636, above the player). Not checked: artist pages,
-album pages, fullscreen/cinema, lyrics view, settings panel, context menus.
+Home, Liked Songs, Search, playlist, album and artist pages, now-playing sidebar: glass
+panels, floating glass player, up-next card bottom-left (x=8, y=636, above the player).
+Playlist/album/artist fixes added 2026-10-17 (compat CSS). Not checked: fullscreen/cinema,
+lyrics view, settings panel, context menus, podcast/episode pages.
 
 ## When it will break / how to undo
 
