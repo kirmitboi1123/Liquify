@@ -1,0 +1,23 @@
+
+/* ---- Spotify 1.3.5.3058 compat (local fork) ----
+   Classes Spicetify's css-map and the automatic remap did not cover.
+   Each rule mirrors an upstream Liquify rule; the comment names the old class. */
+
+/* main-home-homeHeader: Home's grey gradient band behind the shortcut tiles */
+.kMaYBahSBLOnErF7DLR2 {
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* main-entityHeader-backgroundColor / -overlay: purple block behind playlist headers */
+.uP1rcUSIWCFaOZaoH0ZG,
+.uP1rcUSIWCFaOZaoH0ZG.nfBy1HoO33kgPOyEc3WZ {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+/* main-actionBarBackground-background: dark gradient behind the play-button row */
+.IfBZ5VdI_2nwDMl4H6Yh {
+  background-color: transparent !important;
+  background-image: none !important;
+}
