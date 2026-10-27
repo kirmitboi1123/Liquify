@@ -20,6 +20,9 @@ default player, the up-next card stuck top-left. Same reports upstream: issues #
    `css-map.2.45.3-release.json.bak`). Readable names in the live app went 24 -> 137.
    - Spicetify ignores the local map unless the remote fetch fails, so the rebuild was run as:
      `HTTPS_PROXY=http://127.0.0.1:9 spicetify restore backup apply`
+   - `tools/merge-cssmap.ps1` does the merge without Python (missing keys only, Spicetify wins on
+     a conflict, no BOM, original kept as `css-map.<sha>.json.bak`); it ships in the Windows release
+     zip. On a stock 2.46.3/2.46.4 map it adds 315 entries, identical to the map in use here.
 2. **Theme patch.** `tools/patch_theme.py` rewrites Liquify's 1.3.3-era hashes using
    `tools/classmap-final.json` (CSS diff + Liquify's own git history + `tools/manual-map.json`),
    and appends `tools/compat-1.3.5.css` for the few gaps found by eye. Output: `build/`.
