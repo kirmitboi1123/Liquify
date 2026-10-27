@@ -2,6 +2,7 @@
 
 Upstream: https://github.com/NMWplays/Liquify (main @ 419612d, "Fixes for Spotify V 1.3.3").
 Branch here: `spotify-1.3.5`, pushed to https://github.com/kirmitboi1123/Liquify (remote `fork`).
+macOS build: branch `spotify-1.3.6-mac`, folder `build-mac/` (see "macOS" at the end).
 
 ## Why it broke
 
@@ -67,3 +68,77 @@ lyrics view, settings panel, context menus, podcast/episode pages.
   still required.
 - Verified over CDP: home, Liked Songs, album page, now-playing sidebar all glass; up-next card
   bottom-left. Not checked: lyrics, fullscreen, settings, podcasts.
+
+## macOS: Spotify 1.3.6.1921 (2026-10-26, built and verified on the Mac)
+
+**`build/` matches nothing on macOS.** The Mac build of the same Spotify release
+(1.3.6.1921.g7086c071a617) uses completely different CSS class hashes: 0 of the theme's hashed
+classes and 0 of the 336 css-map additions exist in the Mac's `xpui.spa`. Spicetify's own
+`css-map.json` holds Windows and macOS keys side by side, but ~100 of its Windows-only entries have
+no macOS twin.
+
+**Windows-to-Mac class map.** Same release, so both builds have the same CSS rules in the same
+order, only renamed. `tools/winmac_map.py` replaces every class name with a placeholder, aligns CSS
+files whose skeletons are identical class by class (53 of 96 files exactly; chunk ids differ, so
+leftover files pair by identical skeleton), aligns near-identical files rule by rule with difflib,
+and counts every pairing as a vote: 6,562 classes, 0 conflicting votes, 0 many-to-one. Three
+classes in `xpui-snapshot.css` were matched by hand on identical rule bodies (one candidate each):
+`MhNxqEtcoJ7NTbdrVaZz` -> `p63irlHLPRPNuhXrkoKr`, `zUXTETXFM98g23SLSxFj` -> `yppiCd4J5oZzmncksrhi`,
+`fL8UiTknkJJAXqnUv932` -> `TxO4cJyIggVYNxMM2az4`. Result: `tools/win2mac-1.3.6.1921.json` (6,565
+entries, 5,356 renamed). Coverage, rechecked on Windows against both clean `xpui.spa` files: user.css
+187/187 hashes mapped and present on the Mac, theme.js 40/40, css-map additions 336/336.
+
+**Mac css-map additions.** `tools/css-map-additions-mac-1.3.6.1921.json` (434 entries) = the 336
+Windows additions with keys translated (readable names unchanged) + 98 macOS twins of Spicetify's
+own Windows-only entries (needed because `patch_theme.py`'s 4th argument rewrote the theme to those
+readable names). Merge with `tools/merge_cssmap.py` (missing keys only, Spicetify wins on conflict,
+UTF-8 without BOM, original saved as `css-map.<sha>.json.bak`). **The theme only works with these
+merged and applied through the dead proxy**, exactly like the Windows additions.
+
+**`build-mac/`** = `build/` translated through the map (user.css 272 replacements, theme.js 43), then
+the css-map renames (1 in user.css: `eO_TtjpETEJ3VwmJEn0S` -> `main-card-card`). Rebuild for a new
+Spotify version (extract both clean `xpui.spa` files first; they are zips):
+
+```
+python3 tools/winmac_map.py <win_xpui_dir> <mac_xpui_dir> tools/win2mac-<ver>.json   # then add the 3 hand-matched entries
+python3 tools/make_mac_port.py tools/win2mac-<ver>.json . <Spicetify's unmerged css-map.json> /tmp/macport
+cp /tmp/macport/css-map-additions.json tools/css-map-additions-mac-<ver>.json
+python3 tools/merge_cssmap.py tools/css-map-additions-mac-<ver>.json ~/.spicetify/css-map.json
+cp tools/patch_theme.py /tmp/macport/   # run a copy: next to compat-1.3.5.css it appends it again, and build/ already has it
+python3 /tmp/macport/patch_theme.py /tmp/macport/mac-map.json build build-mac ~/.spicetify/css-map.json
+```
+
+`patch_theme.py` now writes with `write_bytes`: `write_text(newline=...)` needs Python 3.10 and macOS
+ships 3.9.6 as `/usr/bin/python3`.
+
+**Mac paths.** css-map `~/.spicetify/css-map.json`; config and themes `~/.config/spicetify/`;
+Spicetify backup `~/.local/state/spicetify/Backup/` (not `~/.config`).
+
+**Auto re-apply (`mac/`), the Windows logon task ported.** `spicetify-reapply.sh` keeps every Windows
+rule: three states (patched / clean / updating, wait up to 5 min); clean -> move stale `Apps/xpui`,
+`Apps/login`, Backup and Extracted to `~/.local/state/spicetify/Backup-stale/<time>/` and reset
+`[Backup] version`; never `backup` without a clean `xpui.spa`; merge css-map + dead proxy before every
+apply (`restore backup apply` if the merge changed the map while patched); `spicetify update` once on
+failure; settle, recheck, loop up to 3 times; log ends in `VERIFIED patched (Spotify x.y.z)`; a lock
+stops overlapping runs. Mac-only: from launchd, `spicetify apply` closes Spotify and nothing restarts
+it, so the script reopens Spotify if it was open. The LaunchAgent is RunAtLoad only (WatchPaths would
+retrigger itself through "patched -> apply"). Assumes Spicetify at `~/.spicetify/spicetify`. Install:
+
+```
+mkdir -p ~/.config/spicetify/mac-port
+cp mac/spicetify-reapply.sh "mac/Fix Spicetify.command" tools/merge_cssmap.py ~/.config/spicetify/mac-port/
+chmod +x ~/.config/spicetify/mac-port/spicetify-reapply.sh ~/.config/spicetify/mac-port/"Fix Spicetify.command"
+cp tools/css-map-additions-mac-1.3.6.1921.json ~/.config/spicetify/css-map-additions.json
+sed "s|__HOME__|$HOME|g" mac/app.spicetify.reapply.plist > ~/Library/LaunchAgents/app.spicetify.reapply.plist
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/app.spicetify.reapply.plist
+```
+
+Double-click `~/.config/spicetify/mac-port/Fix Spicetify.command` to re-apply now (no login wait).
+Log: `~/.config/spicetify/mac-port/reapply.log`.
+
+**Verified on the Mac (macOS 15.6.1, Apple Silicon, Spicetify 2.46.4), CDP screenshots + live DOM:**
+home, Liked Songs, album page, now-playing sidebar: glass panels, 0 large opaque dark elements,
+floating glass player, up-next card bottom-left above the player; readable `Root__`/`main-` names in
+the DOM 138 (Windows 137). The Quick Queue fix (spicetify-extensions branch `quickqueue-spotify-1.3.6`)
+works unchanged. Re-apply script tested: closed Spotify, reopened it ~8 s later, `VERIFIED patched`.
+Not checked: lyrics view, fullscreen/cinema, settings, podcasts.

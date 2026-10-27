@@ -22,6 +22,7 @@ for name in ("user.css", "theme.js", "color.ini"):
     if renpat and name != "color.ini":
         r = len(renpat.findall(text))
         text = renpat.sub(lambda x: cssmap[x.group(1)], text)
-    (out / name).write_text(text, "utf8", newline="")
+    # write_bytes, not write_text(newline=""): that argument needs Python 3.10, macOS ships 3.9.
+    (out / name).write_bytes(text.encode("utf8"))
     print(f"{name}: {n} replacements, {r} renamed to Spicetify css-map names")
 shutil.copy(src / "LICENSE.txt", out / "LICENSE.txt")

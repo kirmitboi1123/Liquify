@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template: install with  sed "s|__HOME__|$HOME|g" app.spicetify.reapply.plist > ~/Library/LaunchAgents/app.spicetify.reapply.plist  (launchd does not expand ~ or $HOME). -->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>app.spicetify.reapply</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/bash</string>
+		<string>__HOME__/.config/spicetify/mac-port/spicetify-reapply.sh</string>
+		<string>login</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardOutPath</key>
+	<string>__HOME__/.config/spicetify/mac-port/launchd.out.log</string>
+	<key>StandardErrorPath</key>
+	<string>__HOME__/.config/spicetify/mac-port/launchd.err.log</string>
+</dict>
+</plist>
