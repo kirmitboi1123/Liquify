@@ -30,10 +30,10 @@
 .x-settings-section,
 .JDUQ8zTo6EUgHoYt,
 .main-entityHeader-imageContainerWrapper,
-.main-entityHeader-container.gmKBgPCnX785KDicbdJu,
+.main-entityHeader-container.main-entityHeader-containerNormal,
 .main-entityHeader-container.main-entityHeader-containerNormal,
 .Root__globalNav .DoxYADBBjYMvoYwl7QPg,
-.yfJeY2Xi99dPOe6fsIha,
+.main-entityHeader-imageContainerWrapper,
 .Root__globalNav,
 .iGRaSZDa1r0m21aF6oZq,
 .niJOWstqVyfckHcXQxP1 .cSZJwcwYgJfwduUmXOOV {
@@ -351,9 +351,9 @@ span.e-10810-overflow-wrap-anywhere.e-10810-button-primary__inner.encore-inverte
 .bTgBWvuzt0s_dQWLj2OL,
 .Root__right-sidebar,
 .jAPoQzdSobJR8JcMctyg,
-.I_rmSQsigYRs2UvtwERh,
+.main-entityHeader-image,
 .ZerbJYyhS0yvCyAvRiGd,
-.x0Tk9K1tu0sFwdD5iNF5 .IQI1MMR9t78Vtcj_40sk,
+.view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-imageHolder,
 .At_PezR11Vm2qa_1CMwg,
 .YSBtq6aii9APt8oZSI7i,
 .xo_9j50ydtOsuZO_EU4A,
@@ -554,7 +554,7 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
 
 /*Right sidebar*/
 
-.eWU4JoxyECcwnSf_,
+.Root__right-sidebar-peek,
 .vDYkSjYiSm42esIK,
 .vDYkSjYiSm42esIK:before {
   background-color: transparent;
@@ -564,7 +564,7 @@ button.e-10451-legacy-button.e-10451-legacy-button-tertiary.e-10451-overflow-wra
   border-radius: var(--liquify-right-radius, 20px);
 }
 
-.a_fKt7xvd8od_kEb {
+.Root__right-sidebar-peekContent {
   border-radius: var(--liquify-right-radius, 20px);
 }
 
@@ -2348,26 +2348,26 @@ span.e-10451-overflow-wrap-anywhere.e-10451-button-primary__inner.encore-bright-
   box-shadow: var(--liquify-shadow);
 }
 
-.wJiY1vDfuci2a4db {
+.Root__right-sidebar-overlay {
   background-color: transparent;
   border-radius: 20px;
   margin-left: 7px;
 }
 
-.fEThIghNSPAx5Xs3.WXUVXy433Xk07S0H:hover .SC_eWQl28srvyLED,
-.fEThIghNSPAx5Xs3.WXUVXy433Xk07S0H:has(.Q3fgyBaNgcu34CP1:focus-visible) .SC_eWQl28srvyLED {
+.Root__right-sidebar-collapsed.Root__right-sidebar-deferredCollapsed:hover .Root__right-sidebar-fauxMainViewEnd,
+.Root__right-sidebar-collapsed.Root__right-sidebar-deferredCollapsed:has(.Root__right-sidebar-overlayButton:focus-visible) .Root__right-sidebar-fauxMainViewEnd {
   visibility: hidden;
 }
 
-.fEThIghNSPAx5Xs3.WXUVXy433Xk07S0H:has(.Q3fgyBaNgcu34CP1:focus-visible) .wJiY1vDfuci2a4db {
+.Root__right-sidebar-collapsed.Root__right-sidebar-deferredCollapsed:has(.Root__right-sidebar-overlayButton:focus-visible) .Root__right-sidebar-overlay {
   opacity: 1;
 }
 
-.a_fKt7xvd8od_kEb {
+.Root__right-sidebar-peekContent {
   transform: translateX(calc(100% - 45px));
 }
 
-.vH8s0xuGZZAqkkUl {
+.Root__right-sidebar-overlayWrapper {
   transform: translateX(4px);
 }
 
@@ -2830,7 +2830,7 @@ p.e-10810-text.encore-text-body-small.encore-internal-color-text-base {
   box-shadow: var(--liquify-shadow);
 }
 
-.UbzV6GmaFXRSbQNfaAZL.ajHBc3IuiQpQkTmGSCcr {
+.main-entityHeader-container.main-entityHeader-containerNormal {
   box-shadow: var(--liquify-shadow);
   min-height: 0px !important;
   height: fit-content !important;
@@ -2841,25 +2841,25 @@ p.e-10810-text.encore-text-body-small.encore-internal-color-text-base {
   border-radius: 20px;
 }
 
-.nzYvaC60xSKEJR6fewog {
+.main-entityHeader-contentWrapper {
   padding: 0px;
 }
 
-.I_rmSQsigYRs2UvtwERh {
+.main-entityHeader-image {
   border-radius: 20px;
 }
 
-.NG0KBybUCTo8_SxXHF3N {
+.main-topBar-background {
   background-color: transparent;
   border-radius: 20px;
   box-shadow: var(--liquify-shadow);
 }
 
-.aFTT7HhSi7nKw___DYTw {
+.main-topBar-overlay {
   background-color: transparent;
 }
 
-.dlCd0Cz0sESYGOnuo02M:after {
+.main-topBar-mixingBackground:after {
   background-image: none;
 }
 
@@ -2872,14 +2872,14 @@ p.e-10810-text.encore-text-body-small.encore-internal-color-text-base {
   background-color: transparent;
 }
 
-.x0Tk9K1tu0sFwdD5iNF5 {
+.view-homeShortcutsGrid-shortcut {
   background-color: transparent;
   border-radius: 20px;
   box-shadow: var(--liquify-shadow);
   transition: transform 0.28s cubic-bezier(0.3, 2.25, 0.32, 1) !important;
 }
 
-.x0Tk9K1tu0sFwdD5iNF5:hover {
+.view-homeShortcutsGrid-shortcut:hover {
   transform: scale(1.03);
 }
 
@@ -2951,7 +2951,7 @@ p.e-10810-text.encore-text-body-small.encore-internal-color-text-base {
 }
 
 /* ...except next to "new release from", whose header is 48px (avatar); keep both rows level */
-.QVX8Getzkg44Frgfu0wF + .YeMXHXUM5LesBemNwrlw .PBnLFYrjIPBbWdTWUU_w > :first-child {
+.main-gridContainer-fixedShelf + .YeMXHXUM5LesBemNwrlw .PBnLFYrjIPBbWdTWUU_w > :first-child {
   min-height: 48px;
 }
 
@@ -3130,7 +3130,7 @@ button.e-10860-legacy-button.e-10860-legacy-button-tertiary.e-10860-overflow-wra
   background-color: transparent !important;
 }
 
-.yvYdZyDIc9bukbMMn5Qe:after {
+.playlist-playlist-mixingBackground:after {
   background-image: none;
 }
 
@@ -3138,7 +3138,7 @@ button.e-10860-legacy-button.e-10860-legacy-button-tertiary.e-10860-overflow-wra
   background-image: none;
 }
 
-.KiLYXau_zZC4Y6HztjLZ {
+.playlist-playlist-playlistContent {
   background-color: transparent;
 }
 
@@ -3325,7 +3325,7 @@ button.e-10860-legacy-button.e-10860-legacy-button-tertiary.e-10860-overflow-wra
   height: 100%;
 }
 
-.UbzV6GmaFXRSbQNfaAZL.gmb9NAvXgkg8XFMlNTNR {
+.main-entityHeader-container.main-entityHeader-withBackgroundImage {
   box-shadow: var(--liquify-shadow);
   min-height: 0px !important;
   height: fit-content !important;
@@ -3360,7 +3360,7 @@ div:has(> .esdT7NhwpvXK5y8x_AhA) {
   transform: scale(1.03);
 }
 
-.WUHV3yvmh_gdGie5wFp4 {
+.main-actionBar-ActionBar {
   width: 98%;
   padding: 10px;
   margin-top: 10px;
@@ -3476,7 +3476,7 @@ span.e-10860-overflow-wrap-anywhere.e-10860-button-primary__inner.encore-bright-
   transform: scale(1.03);
 }
 
-.x0Tk9K1tu0sFwdD5iNF5 ._ITzj7UH_2ZD81wa9ULl .HTByCIAIGZANuv5iA9uX {
+.view-homeShortcutsGrid-shortcut .view-homeShortcutsGrid-PlayButtonContainer .view-homeShortcutsGrid-playButton {
   border-radius: 15px;
   box-shadow: var(--liquify-shadow);
 }
@@ -4167,7 +4167,7 @@ button.encore-text-body-small-bold.e-10860-legacy-button-primary.e-10860-legacy-
   background-color: transparent;
 }
 
-.UbzV6GmaFXRSbQNfaAZL.gmb9NAvXgkg8XFMlNTNR.PlM17FTnYyoT8BzLzLfF {
+.main-entityHeader-container.main-entityHeader-withBackgroundImage.main-entityHeader-episode {
   background-color: transparent;
 }
 
@@ -4348,7 +4348,7 @@ button.encore-text-body-small-bold.e-10860-legacy-button--small.e-10860-legacy-b
 }
 
 /* playlist-playlist-playlistContent: solid dark panel under the header on playlist pages */
-.t_mbBtGZ5QtvpsVNOtOj {
+.playlist-playlist-playlistContent {
   background: transparent !important;
 }
 
@@ -4369,22 +4369,55 @@ button.encore-text-body-small-bold.e-10860-legacy-button--small.e-10860-legacy-b
 
 /* main-topBar-background: sticky title bar that fades in when you scroll a playlist/album.
    Same treatment as upstream: transparent, rounded, glass (with the performance-mode fallback). */
-.B_NENXC7AHTEKsYhv3qv {
+.main-topBar-background {
   background: transparent !important;
   border-radius: 20px;
   box-shadow: var(--liquify-shadow);
   backdrop-filter: url(#glass-filter--r1-7) blur(var(--liquify-glass-blur, 2px));
 }
-html.liquify-perf-no-glass .B_NENXC7AHTEKsYhv3qv {
+html.liquify-perf-no-glass .main-topBar-background {
   backdrop-filter: blur(var(--liquify-backdrop-blur, 2rem)) saturate(1.4);
 }
 
 /* main-topBar-overlay: 60% black layer on top of that bar */
-.EJTHIv1RyutH0yibEwgn {
+.main-topBar-overlay {
   background-color: transparent !important;
 }
 
 /* bottom ad banner box: Adblockify removes the ad but not this empty #181818 strip on 1.3.5 */
 .uAHPSe7bihFdDS76WWIg {
   display: none !important;
+}
+
+/* Spotify 1.3.6 rebuilt the now-playing view with new classes; none of the theme's 1.3.5 NPV
+   hashes (.tlJt8JO80alw0Nlw6iW9, .AfKmrZ306qeQTbYQfwLc, ...) exist in it any more. Same
+   treatment as the 1.3.5 rules, on the new classes. Not in any css-map yet. */
+
+/* container (timeline-scope:--npv-scroll): paints --background-base (#121212) over the glass,
+   and sets the card colour (#242424) that Credits / Next in queue / ... use */
+.vVF0gCDG9l8RCOK3_2kw {
+  background-color: transparent !important;
+  border-radius: var(--liquify-right-radius, 20px);
+  --section-background-base: transparent;
+  --section-border-radius: 20px;
+}
+
+/* header (was .tlJt8JO80alw0Nlw6iW9): its scroll-driven animation paints #121212 once the
+   panel scrolls, so drop it and make the header a glass pill like the playlist top bar */
+._qEwikUlZSIdhG1eHl6y {
+  animation: none !important;
+  background-color: transparent !important;
+  inset-inline: 16px;
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: var(--liquify-shadow);
+  backdrop-filter: url(#glass-filter--r1-7) blur(var(--liquify-glass-blur, 2px));
+}
+html.liquify-perf-no-glass ._qEwikUlZSIdhG1eHl6y {
+  backdrop-filter: blur(var(--liquify-backdrop-blur, 2rem)) saturate(1.4);
+}
+
+/* 48px header space + 30px for the header's margin (was .AfKmrZ306qeQTbYQfwLc) */
+.HuKs8FZg6Y75cV9Lh0Kk {
+  margin-top: 78px;
 }

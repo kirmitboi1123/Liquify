@@ -5913,18 +5913,18 @@ ${DISC}::after {
     let nscBarObserver = null;
     let lastBarContainer = null;
     function watchBarContainer() {
-      const el = document.querySelector(".kUPoamhLb3kO_sjj.hWhY_hHpdvPpf3Z7K9ju");
+      const el = document.querySelector(".Root__cinema-view.hWhY_hHpdvPpf3Z7K9ju");
       if (el && el !== lastBarContainer) {
         lastBarContainer = el;
         if (nscBarObserver) nscBarObserver.disconnect();
         nscBarObserver = new MutationObserver(() => {
           if (!card) return;
-          const hidden = el.classList.contains("dwWT5Kw_H7IhSKjG");
+          const hidden = el.classList.contains("Root__cinema-view--controls-hidden");
           card.style.display = hidden ? "none" : "";
         });
         nscBarObserver.observe(el, { attributes: true, attributeFilter: ["class"] });
         if (card) {
-          const hidden = el.classList.contains("dwWT5Kw_H7IhSKjG");
+          const hidden = el.classList.contains("Root__cinema-view--controls-hidden");
           card.style.display = hidden ? "none" : "";
         }
       }
@@ -6102,7 +6102,7 @@ ${CANVAS_VIDEO} { filter: blur(${getBlur()}px); }`;
 
   // src/settings/features/actionBarBox.ts
   var STYLE_ID6 = "liquify-action-bar-box-style";
-  var ACTION_BAR = ".WUHV3yvmh_gdGie5wFp4";
+  var ACTION_BAR = ".main-actionBar-ActionBar";
   function updateActionBarBoxCss(show) {
     const css = show ? "" : `${ACTION_BAR} { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }`;
     updateStyle(STYLE_ID6, css);
@@ -6333,9 +6333,9 @@ ${CANVAS_VIDEO} { filter: blur(${getBlur()}px); }`;
   // src/settings/features/homeLayout.ts
   var STYLE_ID10 = "liquify-home-layout-style";
   var HOME_LAYOUT_KEY = "liquify-home-layout";
-  var HOME_SECTIONS = ".mpXpsL8sGx7xHzYAb5X7, .QVX8Getzkg44Frgfu0wF, .YeMXHXUM5LesBemNwrlw";
+  var HOME_SECTIONS = ".view-homeShortcutsGrid-shortcuts, .main-gridContainer-fixedShelf, .YeMXHXUM5LesBemNwrlw";
   function updateHomeLayoutCss(on) {
-    const css = on ? `${HOME_SECTIONS} { padding: 16px; box-shadow: var(--liquify-shadow); border-radius: 20px; }.YeMXHXUM5LesBemNwrlw .X433eA5ps5SoaH2ccjn0 { --margin-start: 0px; --margin-end: 0px; }.QVX8Getzkg44Frgfu0wF .L5oPevXEAY1GuRJ9a1_j { margin-inline: 0; box-sizing: border-box; }` : `${HOME_SECTIONS} { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }`;
+    const css = on ? `${HOME_SECTIONS} { padding: 16px; box-shadow: var(--liquify-shadow); border-radius: 20px; }.YeMXHXUM5LesBemNwrlw .X433eA5ps5SoaH2ccjn0 { --margin-start: 0px; --margin-end: 0px; }.main-gridContainer-fixedShelf .L5oPevXEAY1GuRJ9a1_j { margin-inline: 0; box-sizing: border-box; }` : `${HOME_SECTIONS} { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }`;
     updateStyle(STYLE_ID10, css);
   }
   function applyHomeLayout(mode) {
@@ -6408,7 +6408,7 @@ ${CANVAS_VIDEO} { filter: blur(${getBlur()}px); }`;
 
   // src/settings/features/playlistHeader.ts
   var STYLE_ID12 = "liquify-playlist-header-style";
-  var HEADER = ".UbzV6GmaFXRSbQNfaAZL.ajHBc3IuiQpQkTmGSCcr";
+  var HEADER = ".main-entityHeader-container.main-entityHeader-containerNormal";
   function updatePlaylistHeaderCss(show) {
     const css = show ? "" : `${HEADER} { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; box-shadow: none !important; }`;
     updateStyle(STYLE_ID12, css);
@@ -6938,8 +6938,8 @@ ${LINES_ROOT} ${LINE}:not(${EMPTY_LINE}) { margin-bottom: ${margin}px; }` : "";
   // src/settings/features/visualizers.ts
   var STYLE_ID17 = "liquify-visualizer-style";
   var PLAYLIST_EQ = "img.YQ0uPtmHEvHsS8MszwpG";
-  var HOME_EQ = "img.Paf_Idn_uHcJizNgwOAs";
-  var HOME_SHORTCUT = ".x0Tk9K1tu0sFwdD5iNF5";
+  var HOME_EQ = "img.view-homeShortcutsGrid-equaliserImage";
+  var HOME_SHORTCUT = ".view-homeShortcutsGrid-shortcut";
   function ensureStyle2() {
     if (document.getElementById(STYLE_ID17)) return;
     const style = document.createElement("style");
@@ -11084,8 +11084,8 @@ ${HOME_SHORTCUT}:hover [data-liquify-home-visualizer] {
     { selector: ".main-nowPlayingView-actionButton" },
     { selector: ".main-playlistEditDetailsModal-container" },
     { selector: ".main-playlistEditDetailsModal-imageDropDownButton" },
-    { selector: ".mpXpsL8sGx7xHzYAb5X7" },
-    { selector: ".QVX8Getzkg44Frgfu0wF" },
+    { selector: ".view-homeShortcutsGrid-shortcuts" },
+    { selector: ".main-gridContainer-fixedShelf" },
     { selector: ".YeMXHXUM5LesBemNwrlw" },
     { selector: ".VyDGISqVe_mffhTkwoOB" },
     { selector: ".os-scrollbar-handle" },
@@ -11142,7 +11142,7 @@ ${HOME_SHORTCUT}:hover [data-liquify-home-visualizer] {
     { selector: ".main-card-card" },
     { selector: "#liquify-settings-gear-btn" },
     { selector: ".artist-artistDiscography-topBar.artist-artistDiscography-topBarScrolled" },
-    { selector: ".wJiY1vDfuci2a4db" },
+    { selector: ".Root__right-sidebar-overlay" },
     { selector: ".ixNu7Kll1pUsSiCYy539" },
     { selector: ".Sq9y_q7QN1SBZpU_Dhm7" },
     { selector: ".jNfAkO57QqoiKJ6jJhZt" },
@@ -11152,23 +11152,23 @@ ${HOME_SHORTCUT}:hover [data-liquify-home-visualizer] {
     { selector: ".Root__globalNav", blur: 5 },
     { selector: ".iGRaSZDa1r0m21aF6oZq" },
     { selector: ".niJOWstqVyfckHcXQxP1 .cSZJwcwYgJfwduUmXOOV" },
-    { selector: ".yfJeY2Xi99dPOe6fsIha" },
+    { selector: ".main-entityHeader-imageContainerWrapper" },
     { selector: ".qPY4gsmEW6Bq3CnNXAIE .X6OstObvuolbOo_pF6XN" },
-    { selector: ".x0Tk9K1tu0sFwdD5iNF5" },
+    { selector: ".view-homeShortcutsGrid-shortcut" },
     { selector: ".LNpoPDYnF14Zg2Ml0SEK" },
     { selector: ".yanzBsLcAL8wDzLb8QrU" },
     { selector: ".QJeB8A9apRR4gkmZlnSM" },
-    { selector: ".UbzV6GmaFXRSbQNfaAZL.ajHBc3IuiQpQkTmGSCcr" },
-    { selector: ".NG0KBybUCTo8_SxXHF3N" },
+    { selector: ".main-entityHeader-container.main-entityHeader-containerNormal" },
+    { selector: ".main-topBar-background" },
     { selector: ".zyugqDUpsiWa8v7oczU1" },
     { selector: ".h3nJTxxmxIYRP5Aft1CC.QfR1lK07GZcvLZKPXHPP" },
     { selector: ".e-10860-legacy-box--tinted" },
     { selector: ".goKxWei7aIJdA857U744" },
-    { selector: ".UbzV6GmaFXRSbQNfaAZL.gmb9NAvXgkg8XFMlNTNR" },
+    { selector: ".main-entityHeader-container.main-entityHeader-withBackgroundImage" },
     { selector: ".qtQr7uPKnGMSxLWgth54" },
     { selector: ".PhrrxnpQqpJQdqWtlyIj" },
     { selector: ".zJpJ7DGpm__TAUnMYhfg" },
-    { selector: ".WUHV3yvmh_gdGie5wFp4" },
+    { selector: ".main-actionBar-ActionBar" },
     { selector: ".b0kbWFp7K9_JqU7W7FqI" },
     { selector: ".JOsq_4H0UgeETLvv6Wah" },
     { selector: ".WbemFLA2iwaTLbng7jdc" },

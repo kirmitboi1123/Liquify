@@ -63,3 +63,36 @@ html.liquify-perf-no-glass .B_NENXC7AHTEKsYhv3qv {
 .uAHPSe7bihFdDS76WWIg {
   display: none !important;
 }
+
+/* Spotify 1.3.6 rebuilt the now-playing view with new classes; none of the theme's 1.3.5 NPV
+   hashes (.tlJt8JO80alw0Nlw6iW9, .AfKmrZ306qeQTbYQfwLc, ...) exist in it any more. Same
+   treatment as the 1.3.5 rules, on the new classes. Not in any css-map yet. */
+
+/* container (timeline-scope:--npv-scroll): paints --background-base (#121212) over the glass,
+   and sets the card colour (#242424) that Credits / Next in queue / ... use */
+.vVF0gCDG9l8RCOK3_2kw {
+  background-color: transparent !important;
+  border-radius: var(--liquify-right-radius, 20px);
+  --section-background-base: transparent;
+  --section-border-radius: 20px;
+}
+
+/* header (was .tlJt8JO80alw0Nlw6iW9): its scroll-driven animation paints #121212 once the
+   panel scrolls, so drop it and make the header a glass pill like the playlist top bar */
+._qEwikUlZSIdhG1eHl6y {
+  animation: none !important;
+  background-color: transparent !important;
+  inset-inline: 16px;
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: var(--liquify-shadow);
+  backdrop-filter: url(#glass-filter--r1-7) blur(var(--liquify-glass-blur, 2px));
+}
+html.liquify-perf-no-glass ._qEwikUlZSIdhG1eHl6y {
+  backdrop-filter: blur(var(--liquify-backdrop-blur, 2rem)) saturate(1.4);
+}
+
+/* 48px header space + 30px for the header's margin (was .AfKmrZ306qeQTbYQfwLc) */
+.HuKs8FZg6Y75cV9Lh0Kk {
+  margin-top: 78px;
+}
